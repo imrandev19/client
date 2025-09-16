@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function CourseCard({ course }) {
   return (
-    <div className="bg-white rounded shadow hover:shadow-lg transition overflow-hidden">
+    <div className="bg-white rounded z-100 shadow hover:shadow-lg transition overflow-hidden">
       <Link to={`/course/${course.id}`}>
         <img src={course.thumbnail} alt={course.title} className="w-full h-44 object-cover" />
         <div className="p-4">

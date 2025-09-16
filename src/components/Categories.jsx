@@ -11,7 +11,7 @@ const categories = [
 
 export default function Categories() {
   return (
-    <section className="py-12">
+    <section className="relative z-20 py-12 bg-white">
       <div className="container mx-auto px-6">
         <h2 className="text-2xl font-semibold mb-6">Popular Categories</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">

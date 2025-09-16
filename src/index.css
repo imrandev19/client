@@ -14,3 +14,32 @@
     @apply font-sans; /* Inter is now default */
   }
 }
+@keyframes slowping {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-slowping {
+  animation: slowping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.icon-thicker-stroke svg path {
+          stroke-width: 5px; /* Adjust as needed */
+        }
+        .btn-gradient {
+  @apply text-white flex items-center gap-3 px-4 py-3 rounded-xl font-semibold transition-colors duration-300;
+  background-image: linear-gradient(to right, #dc2626, #f87171); /* red-600 → red-400 */
+}
+
+.btn-gradient:hover {
+  background: white;
+  color: #b91c1c; /* red-700 */
+}
