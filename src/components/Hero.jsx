@@ -3,12 +3,15 @@ import { FaPlay } from "react-icons/fa"; // Play icon
 import { GoBook } from "react-icons/go";
 export default function Hero() {
   return (
-    <section className="relative text-black flex items-center min-h-screen py-12 bg-cover bg-center"
-  style={{ backgroundImage: "url('/uploads/banner_bg.png')" }}>
+    <section className="relative z-10 bg-cover bg-center h-full text-black flex items-center py-2">
       {/* Background image */}
-     
+      <img
+        className="absolute top-[-50%] inset-0 w-full object-cover object-center z-[-999]"
+        src="/uploads/banner_bg.png"
+        alt="banner_bg"
+      />
 
-      <div className="container mx-auto flex flex-col md:flex-row items-center gap-10 px-6 relative z-10">
+      <div className="container mx-auto flex flex-col md:flex-row items-center gap-10 px-6">
         {/* Left content */}
         <div className="md:w-1/2">
           <h1 className="font-sans text-5xl font-bold leading-20 w-[550px]">
