@@ -4,44 +4,65 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import  {setCategory}  from "../redux/features/categorySlice"; 
+import { useNavigate } from "react-router-dom";
 
 export default function Categories() {
-  const [categories, setCategories] = useState([]);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+const [categories, setCategories] = useState([])
+  const [selectedCategory,setSelectedCategory] = useState('')
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/category/all-categories")
       .then((res) => {
         if (res.data.success) {
-          setCategories(res.data.data); // because controller returns { success, data }
+          setCategories(res.data.data);
         }
       })
       .catch((err) => {
         console.error("Error fetching categories:", err);
       });
   }, []);
- 
+const handleCategory =(category)=>{
+  setSelectedCategory(category)
+  dispatch(setCategory  (category)); // save in redux
+  navigate("/category-courses");   // redirect
+}
+  // const handleCategoryClick = (category) => {
+  //   console.log(category)
+  //   // dispatch(setCategory(category)); // save in redux
+  //   // navigate("/category-courses");   // redirect
+  // };
 
   return (
     <section className="py-12 relative z-10 bg-gray-50">
       <div className="container mx-auto px-6">
-        <h2 className="text-2xl font-semibold mb-6">Popular Categories</h2>
 
         <Swiper
-          modules={[Navigation]}
-          navigation={true}
-          spaceBetween={10}
-          slidesPerView={6}
-          slidesPerGroup={1}
-          loop={true}
-          className="pb-10"
-        >
+  modules={[Navigation]}
+  navigation={true}
+  spaceBetween={15}
+  slidesPerView={6}
+  slidesPerGroup={1}
+  loop={true}              // <--- enables infinite looping
+  className="pb-10"
+  breakpoints={{
+    320: { slidesPerView: 2 },
+    640: { slidesPerView: 3 },
+    1024: { slidesPerView: 4 },
+    1280: { slidesPerView: 6 },
+  }}
+>
           {categories.map((c) => (
             <SwiperSlide key={c._id}>
-              <Link to={'./CategoryCourses'} className="w-[170px] ml-5 h-[140px] flex flex-col items-center justify-center bg-white rounded shadow cursor-pointer hover:shadow-lg transition">
+              <div onClick={()=>handleCategory(c._id)}
+                
+                className="w-[170px] ml-5 h-[140px] flex flex-col items-center justify-center bg-white rounded shadow cursor-pointer hover:shadow-lg transition"
+              >
                 <div className="text-3xl mb-2 text-red-600">
-                  {/* If backend sends thumbnailImage URL */}
                   {c.thumbnailImage ? (
                     <img
                       src={c.thumbnailImage}
@@ -49,11 +70,11 @@ export default function Categories() {
                       className="w-12 h-12 object-contain"
                     />
                   ) : (
-                    "📁" // fallback emoji if no image
+                    "📁"
                   )}
                 </div>
                 <p className="text-sm font-medium text-center">{c.name}</p>
-              </Link>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

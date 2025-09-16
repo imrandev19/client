@@ -2,6 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import CourseDetails from "./pages/CourseDetails";
+import Categories from "./components/Categories";
+import CategoryCourses from "./components/CategoryCourses";
 import Header from "./components/Header";
 import Footer from "./components/FooterExtended";
 
@@ -12,6 +14,8 @@ export default function App() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/category-courses" element={<CategoryCourses />} />
           <Route path="/course/:id" element={<CourseDetails />} />
         </Routes>
       </main>
