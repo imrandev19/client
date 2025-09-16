@@ -43,3 +43,30 @@
   background: white;
   color: #b91c1c; /* red-700 */
 }
+/* Smaller circular Swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 20px;             /* smaller width */
+  height: 20px;            /* smaller height */
+  background-color: white;  /* button background */
+  border: 1px solid #d1d5db; /* gray border */
+  border-radius: 50%;       /* circle */
+  color: #000;              /* arrow color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #f3f4f6; /* light gray on hover */
+  color: #f43f5e;             /* red arrow on hover */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 10px; /* smaller arrow inside button */
+}

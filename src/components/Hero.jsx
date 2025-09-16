@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="relative z-10 bg-cover bg-center h-full text-black flex items-center py-2">
       {/* Background image */}
       <img
-        className="absolute top-[-50%] inset-0 w-full object-cover object-center z-[-999]"
+        className="absolute top-[-50%] inset-0 w-full  object-cover object-center z-[-999]"
         src="/uploads/banner_bg.png"
         alt="banner_bg"
       />
