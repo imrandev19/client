@@ -31,20 +31,15 @@ const handleCategory =(category)=>{
   dispatch(setCategory  (category)); // save in redux
   navigate("/category-courses");   // redirect
 }
-  // const handleCategoryClick = (category) => {
-  //   console.log(category)
-  //   // dispatch(setCategory(category)); // save in redux
-  //   // navigate("/category-courses");   // redirect
-  // };
 
   return (
-    <section className="py-12 relative z-10 bg-gray-50">
+    <section className="py-12 relative z-10 ">
       <div className="container mx-auto px-6">
 
         <Swiper
   modules={[Navigation]}
   navigation={true}
-  spaceBetween={15}
+  spaceBetween={5}
   slidesPerView={6}
   slidesPerGroup={1}
   loop={true}              // <--- enables infinite looping
@@ -60,7 +55,7 @@ const handleCategory =(category)=>{
             <SwiperSlide key={c._id}>
               <div onClick={()=>handleCategory(c._id)}
                 
-                className="w-[170px] ml-5 h-[140px] flex flex-col items-center justify-center bg-white rounded shadow cursor-pointer hover:shadow-lg transition"
+                className="w-[200px] ml-5 mt-20    h-[157px] flex-none flex flex-col items-center justify-center bg-white rounded-[20px] shadow cursor-pointer hover:shadow-lg transition"
               >
                 <div className="text-3xl mb-2 text-red-600">
                   {c.thumbnailImage ? (
