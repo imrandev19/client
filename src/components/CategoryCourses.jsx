@@ -50,8 +50,8 @@ const CategoryCourses = () => {
                   · <span>{course.students} Students</span>
                 </div>
                 <div className="flex justify-between items-center pb-3">
-                    <div className="text-[14px] font-semibold text-gray-700 mb-4">Course Fee {course.fee}</div>
-                <button className="border-1px border-solid border-[#df6812] text-red-800 px-4 py-2 rounded hover:bg-[#df6812] transition">
+                    <div className="text-[14px] font-semibold text-gray-700 ">Course Fee {course.fee}</div>
+                <button className="block border-[1px]  border-[#df6812] text-red-800 px-[6px] py-[5px] rounded hover:bg-[#df6812] transition hover:cursor-pointer hover:text-white text-[14px] font-medium">
                   Click for Discount
                 </button>
                 </div>
