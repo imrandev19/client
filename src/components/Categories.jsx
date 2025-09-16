@@ -51,11 +51,12 @@ const handleCategory =(category)=>{
     1280: { slidesPerView: 6 },
   }}
 >
+ 
           {categories.map((c) => (
             <SwiperSlide key={c._id}>
               <div onClick={()=>handleCategory(c._id)}
                 
-                className="w-[200px] ml-5 mt-20    h-[157px] flex-none flex flex-col items-center justify-center bg-white rounded-[20px] shadow cursor-pointer hover:shadow-lg transition"
+                className="w-[200px] ml-5     h-[157px] flex-none flex flex-col items-center justify-center bg-white rounded-[20px] shadow cursor-pointer hover:shadow-lg transition"
               >
                 <div className="text-3xl mb-2 text-red-600">
                   {c.thumbnailImage ? (
