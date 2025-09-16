@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Link } from "react-router-dom";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
@@ -38,7 +39,7 @@ export default function Categories() {
         >
           {categories.map((c) => (
             <SwiperSlide key={c._id}>
-              <div className="w-[170px] ml-5 h-[140px] flex flex-col items-center justify-center bg-white rounded shadow cursor-pointer hover:shadow-lg transition">
+              <Link to={'./CategoryCourses'} className="w-[170px] ml-5 h-[140px] flex flex-col items-center justify-center bg-white rounded shadow cursor-pointer hover:shadow-lg transition">
                 <div className="text-3xl mb-2 text-red-600">
                   {/* If backend sends thumbnailImage URL */}
                   {c.thumbnailImage ? (
@@ -52,7 +53,7 @@ export default function Categories() {
                   )}
                 </div>
                 <p className="text-sm font-medium text-center">{c.name}</p>
-              </div>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
