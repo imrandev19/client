@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import CourseDetails from "./pages/CourseDetails";
 import Categories from "./components/Categories";
 import CategoryCourses from "./components/CategoryCourses";
 import Header from "./components/Header";
 import Footer from "./components/FooterExtended";
+import CourseDetails from "./components/CourseDetails";
 
 export default function App() {
   return (

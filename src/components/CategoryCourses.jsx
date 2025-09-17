@@ -2,36 +2,33 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setSelectedCourse } from "../redux/features/courseSlice";
 
 const CategoryCourses = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const  selectedCategory  = useSelector((state) => state.category);
  const categotyId = (selectedCategory.currentCategory)
   const [courses, setCourses] = useState([]);
   // const navigate = useNavigate();
-axios.get(`http://localhost:5000/api/courses/category/${categotyId}`).then((res)=>{
+useEffect(()=>{
+  axios.get(`http://localhost:5000/api/courses/category/${categotyId}`).then((res)=>{
   setCourses(res.data.data)
 }).catch((error)=>{
   console.log("something went wrong", error)
 })
-  // useEffect(() => {
-  //   if (!selectedCategory?._id) {
-  //     // Redirect back if no category is selected
-  //     navigate("/categories");
-  //     return;
-  //   }
+},[])
+  
+const handleCourse=(course)=>{
+  console.log(course._id)
+    // Save to Redux
+    dispatch(setSelectedCourse(course._id));
 
-  //   axios
-  //     .get(`http://localhost:5000/api/courses/category/${selectedCategory._id}`)
-  //     .then((res) => {
-  //       if (res.data.success) {
-  //         setCourses(res.data.data);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.error("Error fetching courses:", err);
-  //     });
-  // }, [selectedCategory, navigate]);
-
+    // Navigate to details page with course._id
+    navigate(`/course/${course._id}`);
+}
   return (
     
     <section className="py-12 bg-gray-100">
@@ -43,9 +40,10 @@ axios.get(`http://localhost:5000/api/courses/category/${categotyId}`).then((res)
 
         {/* Courses Grid */}
         {courses.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div  className="hover:cursor-pointer grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {courses?.map((course, idx) => (
-              <div
+              
+              <div onClick={()=>handleCourse(course)}
                 key={idx}
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
               >
