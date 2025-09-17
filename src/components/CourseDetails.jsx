@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { FaPlay } from "react-icons/fa"; // Play icon
 import { GoBook } from "react-icons/go";
+import { Helmet } from "react-helmet-async";
 export default function CourseDetails() {
   const { id } = useParams(); // get courseId from URL (/course/:id)
   const { selectedCourse } = useSelector((state) => state.course);
@@ -33,7 +34,15 @@ export default function CourseDetails() {
   }
 
   return (
+    
     <div className="container mx-auto px-6 py-12 bg-white">
+      <Helmet>
+        <title>MERN Stack Development Courses | Creative IT</title>
+        <meta
+          name="description"
+          content="Learn MERN stack development with hands-on projects at Creative IT."
+        />
+      </Helmet>
       {/* Header / Title + Summary */}
       <div className="flex justify-between gap-2">
         <div className="mb-8 w-1/2 text-justify">

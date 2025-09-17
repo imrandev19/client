@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { FaPlay } from "react-icons/fa"; // Play icon
+import { GoBook } from "react-icons/go";
 export default function SuccessStories() {
   const [stories, setStories] = useState([]);
 
@@ -26,25 +27,32 @@ export default function SuccessStories() {
         </p>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6  ">
           {stories.length > 0 ? (
             stories.map((item, idx) => (
-              <div
+              <div 
                 key={idx}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
+                className="bg-white max-w-[636px] max-h-[358px] rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition relative"
               >
                 <img
-                  className="w-full h-48 object-cover"
+                  className="w-full  object-cover"
                   src={item.thumbnailImage}
                   alt={item.studentName}
                 />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-800">
-                    {item.studentName}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-2">{item.courseName}</p>
-                  <p className="text-gray-700 text-sm">{item.storyText}</p>
-                </div>
+                 {/* Play button with animated circle */}
+                          <button
+                            className="absolute inset-0 flex items-center justify-center"
+                            aria-label="Play Video"
+                          >
+                            {/* Animated ripple circle (slower custom animation) */}
+                            <span className="absolute w-20 h-20 rounded-full bg-red-600 opacity-40 animate-slowping"></span>
+                
+                            {/* Play button */}
+                            <span className="relative w-16 h-16 flex items-center justify-center rounded-full text-red-600 bg-white shadow-lg hover:scale-110 transition-transform">
+                              <FaPlay size={24} />
+                            </span>
+                          </button>
+              
               </div>
             ))
           ) : (
