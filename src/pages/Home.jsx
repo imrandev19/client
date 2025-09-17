@@ -23,11 +23,12 @@ export default function Home() {
           </Helmet>
       <Hero />
       <Categories />  
-      <CoursesGrid courses={courses} />
+      <ExSollution/>
+        
       <SuccessStories />
       <ExSollution/>
-      <Stats />
-      <Features />
+    
+   
 
     </>
   );

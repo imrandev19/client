@@ -17,7 +17,7 @@ export default function SuccessStories() {
   }, []);
 
   return (
-    <section>
+    <section id="success">
       <div className="container mx-auto py-3">
         <h1 className="font-bold text-[40px] text-center">Success Stories</h1>
         <p className="text-[16px] font-medium text-gray-500 text-center my-5">

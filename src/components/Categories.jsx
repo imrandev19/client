@@ -33,7 +33,7 @@ const handleCategory =(category)=>{
 }
 
   return (
-    <section className="py-12 relative z-10 ">
+    <section id="courses" className="py-12 relative z-10 ">
       <div className="container mx-auto px-6">
 
         <Swiper
