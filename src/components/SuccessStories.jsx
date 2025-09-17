@@ -1,24 +1,55 @@
-import React from "react";
-import  successStories  from "../data/successStories";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function SuccessStories() {
+  const [stories, setStories] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/story/success-stories")
+      .then((res) => {
+        setStories(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
-    <section id="success" className="py-16 bg-white">
-      <div className="container">
-        <h2 className="text-3xl font-bold text-center mb-10">Success Stories</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {successStories.map((story) => (
-            <div key={story.id} className="bg-slate-50 rounded-lg shadow p-6 flex flex-col">
-              <div className="flex items-center gap-4 mb-4">
-                <img src={story.image} alt={story.studentName} className="w-14 h-14 rounded-full object-cover" />
-                <div>
-                  <h3 className="font-semibold">{story.studentName}</h3>
-                  <p className="text-xs text-slate-500">Course: {story.courseName}</p>
+    <section>
+      <div className="container mx-auto py-3">
+        <h1 className="font-bold text-[40px] text-center">Success Stories</h1>
+        <p className="text-[16px] font-medium text-gray-500 text-center my-5">
+          The presence of our students in the ever expanding IT industry motivates us,
+          drives us to guide more
+          <span className="block">people towards a sustainable future.</span>
+        </p>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {stories.length > 0 ? (
+            stories.map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
+              >
+                <img
+                  className="w-full h-48 object-cover"
+                  src={item.thumbnailImage}
+                  alt={item.studentName}
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {item.studentName}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-2">{item.courseName}</p>
+                  <p className="text-gray-700 text-sm">{item.storyText}</p>
                 </div>
               </div>
-              <p className="text-slate-700 flex-1">"{story.storyText}"</p>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-center text-gray-500">No success stories found.</p>
+          )}
         </div>
       </div>
     </section>
